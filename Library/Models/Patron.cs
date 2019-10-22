@@ -5,12 +5,12 @@ namespace Library.Models
     {
         public Patron()
         {
-            this.Copies = new HashSet<PatronCopy>();
+            this.Checkouts = new HashSet<Checkout>();
         }
         public int PatronId { get; set; }
         public string Name { get; set; }
         public string PhoneNumber { get; set; }
-        public ICollection<PatronCopy> Copies { get; }
+        public ICollection<Checkout> Checkouts { get; }
         public virtual ApplicationUser User { get; set; }
     }
 }

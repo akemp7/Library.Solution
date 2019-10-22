@@ -5,10 +5,12 @@ namespace Library.Models
     {
         public Copy()
         {
-            this.Books = new HashSet<BookCopy>();
+            this.Checkouts = new HashSet<Checkout>();
         }
         public int CopyId { get; set; }
-        public ICollection<BookCopy> Books { get; }
+        public int BookId { get; set; }
+        public Book Book { get; set; }
+        public ICollection<Checkout> Checkouts { get; }
         public virtual ApplicationUser User { get; set; }
     }
 }
