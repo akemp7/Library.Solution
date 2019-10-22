@@ -1,3 +1,4 @@
+//Books and Copies: one-to-many relationship (one Book has many Copies, but each Copy only has one Book)
 using System.Collections.Generic;
 namespace Library.Models
 {

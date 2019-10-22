@@ -1,3 +1,4 @@
+//Patrons and Copies: many-to-many relationship (A patron + a copy = a Checkout)
 namespace Library.Models
 {
     public class Checkout

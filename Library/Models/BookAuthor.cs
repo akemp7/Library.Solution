@@ -1,4 +1,4 @@
-
+//Books and Authors: many-to-many relationship
 namespace Library.Models
 {
     public class BookAuthor

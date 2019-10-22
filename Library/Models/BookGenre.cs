@@ -1,4 +1,4 @@
-
+//Books and Genres: many-to-many relationship
 namespace Library.Models
 {
     public class BookGenre
