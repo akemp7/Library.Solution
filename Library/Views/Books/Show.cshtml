@@ -1,0 +1,30 @@
+@using Library.Models
+@model Library.Models.Book
+
+<h2><em>@Model.Title</em></h2>
+<hr>
+
+<p><strong>Author(s):</strong></p>
+@foreach (var join in Model.Authors)
+{
+    <p>
+    @if(!String.IsNullOrEmpty(@join.Author.FirstName))
+    {
+        @join.Author.FirstName
+    }
+    @join.Author.LastName
+    </p>
+}
+
+<p><strong>Genre(s): </strong></p>
+@foreach (var join in Model.Genres)
+{
+    <p>@join.Genre.Name</p>
+}
+
+@if(!String.IsNullOrEmpty(Model.PubYear.ToString()))
+{
+    <p><strong>Publication Year: </strong>@Model.PubYear</p>
+}
+
+<button class="btn btn-default">@Html.ActionLink("Back To Home", "Index", "Account")</button>

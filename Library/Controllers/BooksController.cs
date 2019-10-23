@@ -43,14 +43,23 @@ namespace Library.Controllers
             {
                 _db.BookGenre.Add(new BookGenre() { GenreId = GenreId, BookId = book.BookId });
             }
-
             if (AuthorId != 0)
             {
                 _db.BookAuthor.Add(new BookAuthor() { AuthorId = AuthorId, BookId = book.BookId });
             }
-
             _db.SaveChanges();
             return RedirectToAction("Index", "Account");
+        }
+
+        public ActionResult Show(int id)
+        {
+            Book book = _db.Books
+                .Include(a => a.Authors)
+                .ThenInclude(join => join.Author)
+                .Include(g => g.Genres)
+                .ThenInclude(join => join.Genre)
+                .FirstOrDefault(b => b.BookId == id);
+            return View(book);
         }
 
     }

@@ -10,10 +10,10 @@
     @Html.Label("PubYear", "Year Published: ")
     @Html.TextBoxFor(model => model.PubYear, new { @class="form-control"})
     <br>
-    @Html.Label("Browse a genre: ")
+    @Html.Label("Genre: ")
     @Html.DropDownList("GenreId")
     <br>
-    @Html.Label("Browse an author: ")
+    @Html.Label("Author: ")
     @Html.DropDownList("AuthorId")
     <input type="submit" value="Add Book" class="btn btn-info">
 }
