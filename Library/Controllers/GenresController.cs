@@ -23,9 +23,10 @@ namespace Library.Controllers
             _db = db;
         }
 
-        public ActionResult Index(int genreId)
+        public ActionResult Index(int GenreId)
         {
-            Genre genre = _db.Genres.FirstOrDefault(g => g.GenreId == genreId);
+            System.Console.WriteLine(GenreId);
+            Genre genre = _db.Genres.FirstOrDefault(g => g.GenreId == GenreId);
             return View(genre);
         }
 
@@ -39,7 +40,7 @@ namespace Library.Controllers
         {
             _db.Genres.Add(genre);
             _db.SaveChanges();
-            return RedirectToAction("Index", "Account");
+            return RedirectToAction("Index", "Genres");
         }
 
         

@@ -27,8 +27,8 @@ namespace Library.Controllers
 
     public ActionResult Index()
     {
-      ViewBag.AllGenres = new SelectList(_db.Genres, "GenreId", "Name");
-      ViewBag.AllAuthors = new SelectList(_db.Authors, "AuthorId", "LastName");
+      ViewBag.GenreId = new SelectList(_db.Genres, "GenreId", "Name");
+      ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "LastName");
       return View();
     }
 
