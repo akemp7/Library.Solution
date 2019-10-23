@@ -1,0 +1,19 @@
+@using Library.Models
+@model Library.Models.Author
+
+<h1>Author: @Model.FirstName @Model.LastName</h1>
+<hr>
+
+@if (@Model.Books.Count == 0)
+{
+    <h4>No books have been added for this author yet.</h4>
+}
+else
+{
+    <ul>
+    @foreach (var join in @Model.Books)
+    {
+        <li>@join.Book.Title</li>
+    }
+    </ul>
+}

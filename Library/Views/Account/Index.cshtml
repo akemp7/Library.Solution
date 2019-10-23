@@ -3,8 +3,26 @@
 
 <h2>Welcome to your library, @User.Identity.Name!</h2>
 <hr>
-<button class="btn btn-default">@Html.ActionLink("Search", "Index")</button>
 
+@using (Html.BeginForm("Index", "Genres"))
+{
+    @Html.Label("Browse a genre: ")
+    @Html.DropDownList("AllGenres")
+    <input type="submit" class="btn btn-default" value="See Genre">
+}
+<br>
+@using (Html.BeginForm("Index", "Authors"))
+{
+    @Html.Label("Browse an author: ")
+    @Html.DropDownList("AllAuthors")
+    <input type="submit" class="btn btn-default" value="See Author">
+}
+<br>
+<button class="btn btn-default">@Html.ActionLink("Add a Genre to the Library", "Create", "Genres")</button>
+<br>
+<button class="btn btn-default">@Html.ActionLink("Add an Author to the Library", "Create", "Authors")</button>
+<br>
+<button class="btn btn-default">@Html.ActionLink("Add a Book to the Library", "Create", "Books")</button>
 
 @if (User.Identity.IsAuthenticated)
 {

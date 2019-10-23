@@ -1,0 +1,20 @@
+@using Library.Models
+@model Library.Models.Genre
+
+<h1>Genre: @Model.Name</h1>
+<hr>
+
+@if (@Model.Books.Count == 0)
+{
+    <h4>No books have been added to this genre yet.</h4>
+}
+else
+{
+    <ul>
+    @foreach (var join in @Model.Books)
+    {
+        <li>@join.Book.Title</li>
+    }
+    </ul>
+}
+

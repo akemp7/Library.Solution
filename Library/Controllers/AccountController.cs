@@ -3,6 +3,12 @@ using Microsoft.AspNetCore.Identity;
 using Library.Models;
 using System.Threading.Tasks;
 using Library.ViewModels;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 namespace Library.Controllers
 {
@@ -21,6 +27,8 @@ namespace Library.Controllers
 
     public ActionResult Index()
     {
+      ViewBag.AllGenres = new SelectList(_db.Genres, "GenreId", "Name");
+      ViewBag.AllAuthors = new SelectList(_db.Authors, "AuthorId", "LastName");
       return View();
     }
 
