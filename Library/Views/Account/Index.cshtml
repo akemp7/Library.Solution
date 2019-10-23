@@ -11,12 +11,12 @@
     <input type="submit" class="btn btn-default" value="See Genre">
 }
 <br>
-@*@using (Html.BeginForm("Index", "Authors"))
+@using (Html.BeginForm("Index", "Authors"))
 {
     @Html.Label("Browse an author: ")
-    @Html.DropDownList("AllAuthors")
+    @Html.DropDownList("AuthorId")
     <input type="submit" class="btn btn-default" value="See Author">
-}*@
+}
 <br>
 <button class="btn btn-default">@Html.ActionLink("Add a Genre to the Library", "Create", "Genres")</button>
 <br>

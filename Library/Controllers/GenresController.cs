@@ -25,8 +25,10 @@ namespace Library.Controllers
 
         public ActionResult Index(int GenreId)
         {
-            System.Console.WriteLine(GenreId);
-            Genre genre = _db.Genres.FirstOrDefault(g => g.GenreId == GenreId);
+             Genre genre = _db.Genres
+            .Include(g => g.Books)
+            .ThenInclude(join => join.Book)
+            .FirstOrDefault(g => g.GenreId == GenreId);
             return View(genre);
         }
 

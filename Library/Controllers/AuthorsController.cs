@@ -25,7 +25,10 @@ namespace Library.Controllers
 
         public ActionResult Index(int authorId)
         {
-            Author author = _db.Authors.FirstOrDefault(a => a.AuthorId == authorId);
+            Author author = _db.Authors
+            .Include(a => a.Books)
+            .ThenInclude(join => join.Book)
+            .FirstOrDefault(a => a.AuthorId == authorId);
             return View(author);
         }
 
@@ -41,6 +44,8 @@ namespace Library.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index", "Account");
         }
+
+        
 
     }
 }

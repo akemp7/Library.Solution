@@ -30,13 +30,25 @@ namespace Library.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.GenreId = new SelectList(_db.Genres, "GenreId", "Name");
+            ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "LastName");
             return View();
         }
 
         [HttpPost]
-        public ActionResult Create(Book book)
+        public ActionResult Create(Book book, int GenreId, int AuthorId)
         {
             _db.Books.Add(book);
+            if (GenreId != 0)
+            {
+                _db.BookGenre.Add(new BookGenre() { GenreId = GenreId, BookId = book.BookId });
+            }
+
+            if (AuthorId != 0)
+            {
+                _db.BookAuthor.Add(new BookAuthor() { AuthorId = AuthorId, BookId = book.BookId });
+            }
+
             _db.SaveChanges();
             return RedirectToAction("Index", "Account");
         }
