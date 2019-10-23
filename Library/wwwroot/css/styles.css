@@ -8,7 +8,15 @@ a {
 
 .btn {
     display: block;
-    margin: 15px;
+    margin: 5px;
     margin-left: auto;
     margin-right: auto;
+}
+
+body {
+    background-color: #d9f2d9;
+}
+
+.card {
+    border-color: blue;
 }

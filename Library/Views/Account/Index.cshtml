@@ -18,16 +18,18 @@
     <input type="submit" class="btn btn-default" value="See Author">
 }
 <br>
-<button class="btn btn-default">@Html.ActionLink("Add a Genre to the Library", "Create", "Genres")</button>
-<br>
-<button class="btn btn-default">@Html.ActionLink("Add an Author to the Library", "Create", "Authors")</button>
-<br>
-<button class="btn btn-default">@Html.ActionLink("Add a Book to the Library", "Create", "Books")</button>
 
-@if (User.Identity.IsAuthenticated)
-{
-    @using (Html.BeginForm("LogOff", "Account"))
+<div class="card">
+    <button class="btn btn-default">@Html.ActionLink("Add a Genre to the Library", "Create", "Genres")</button>
+    <br>
+    <button class="btn btn-default">@Html.ActionLink("Add an Author to the Library", "Create", "Authors")</button>
+    <br>
+    <button class="btn btn-default">@Html.ActionLink("Add a Book to the Library", "Create", "Books")</button>
+    @if (User.Identity.IsAuthenticated)
     {
-        <input type="submit" class="btn btn-default" value="Log out" />
+        @using (Html.BeginForm("LogOff", "Account"))
+        {
+            <input type="submit" class="btn btn-default" value="Log out" />
+        }
     }
-}
+</div>
