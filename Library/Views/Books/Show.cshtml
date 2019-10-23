@@ -26,5 +26,5 @@
 {
     <p><strong>Publication Year: </strong>@Model.PubYear</p>
 }
-
+<button class="btn btn-default">@Html.ActionLink("Edit Book Info", "Edit", new { id = @Model.BookId })</button>
 <button class="btn btn-default">@Html.ActionLink("Back To Home", "Index", "Account")</button>

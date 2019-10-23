@@ -62,5 +62,34 @@ namespace Library.Controllers
             return View(book);
         }
 
+        public ActionResult Edit(int id)
+        {
+            ViewBag.GenreId = new SelectList(_db.Genres, "GenreId", "Name");
+            ViewBag.AuthorId = new SelectList(_db.Authors, "AuthorId", "LastName");
+            Book book = _db.Books
+                .Include(a => a.Authors)
+                .ThenInclude(join => join.Author)
+                .Include(g => g.Genres)
+                .ThenInclude(join => join.Genre)
+                .FirstOrDefault(b => b.BookId == id);
+            return View(book);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(Book book, int GenreId, int AuthorId)
+        {
+            if (GenreId != 0)
+            {
+                _db.BookGenre.Add(new BookGenre() { GenreId = GenreId, BookId = book.BookId });
+            }
+            if (AuthorId != 0)
+            {
+                _db.BookAuthor.Add(new BookAuthor() { AuthorId = AuthorId, BookId = book.BookId });
+            }
+            _db.Entry(book).State = EntityState.Modified;
+            _db.SaveChanges();
+            return RedirectToAction("Show", new { id = book.BookId });
+        }
+
     }
 }

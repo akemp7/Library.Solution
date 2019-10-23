@@ -1,0 +1,44 @@
+@model Library.Models.Book
+
+<h2>Edit Book Information</h2>
+<hr>
+<p><strong>Author(s):</strong></p>
+@foreach (var join in Model.Authors)
+{
+    <p>
+    @if(!String.IsNullOrEmpty(@join.Author.FirstName))
+    {
+        @join.Author.FirstName
+    }
+    @join.Author.LastName
+    </p>
+}
+<p><strong>Genre(s): </strong></p>
+@foreach (var join in Model.Genres)
+{
+    <p>@join.Genre.Name</p>
+}
+@if(!String.IsNullOrEmpty(Model.PubYear.ToString()))
+{
+    <p><strong>Publication Year: </strong>@Model.PubYear</p>
+}
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.BookId)
+
+    @Html.Label("Title", "Title: ")
+    @Html.EditorFor(model => model.Title, new { @class="form-control", required="required"})
+    <br>
+    @Html.Label("PubYear", "Year Published: ")
+    @Html.EditorFor(model => model.PubYear, new { @class="form-control"})
+    <br>
+    @Html.Label("Genre: ")
+    @Html.DropDownList("GenreId")
+    <br>
+    @Html.Label("Author: ")
+    @Html.DropDownList("AuthorId")
+    <input type="submit" value="Update Book" class="btn btn-info">
+}
+
+<button class="btn btn-default">@Html.ActionLink("Back To Home", "Index", "Account")</button>
