@@ -1,9 +1,9 @@
-@using Library.Models
 @model Library.Models.Book
 
-<h2><em>@Model.Title</em></h2>
+<h2><em>Delete Book</em></h2>
 <hr>
 
+<p>Title: @Model.Title</p>
 <p><strong>Author(s):</strong></p>
 @foreach (var join in Model.Authors)
 {
@@ -26,6 +26,12 @@
 {
     <p><strong>Publication Year: </strong>@Model.PubYear</p>
 }
-<button class="btn btn-default">@Html.ActionLink("Delete Book", "Delete", new { id = @Model.BookId })</button>
-<button class="btn btn-default">@Html.ActionLink("Edit Book Info", "Edit", new { id = @Model.BookId })</button>
+
+<h3><strong>Are you sure you want to delete this book?</strong></h3>
+@using (Html.BeginForm())
+{
+    <input class="btn btn-danger" type="submit" value="Delete Book">
+}
+
+
 <button class="btn btn-default">@Html.ActionLink("Back To Home", "Index", "Account")</button>

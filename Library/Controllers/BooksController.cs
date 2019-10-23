@@ -91,5 +91,26 @@ namespace Library.Controllers
             return RedirectToAction("Show", new { id = book.BookId });
         }
 
+        public ActionResult Delete(int id)
+        {
+            Book book = _db.Books
+                // .Include(a => a.Authors)
+                // .ThenInclude(join => join.Author)
+                // .Include(g => g.Genres)
+                // .ThenInclude(join => join.Genre)
+                .FirstOrDefault(b => b.BookId == id);
+            return View(book);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Book book = _db.Books.FirstOrDefault(b => b.BookId == id);
+            _db.Books.Remove(book);
+            _db.SaveChanges();
+            return RedirectToAction("Index", "Account");
+        }
+
+
     }
 }
