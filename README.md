@@ -6,12 +6,12 @@
 
 ## Description
 
-This MVC application prompts the user to register an account and login before being able to add books, authors, and genres using many-to-many relationships.
+This MVC application prompts the user to register an account and login before being able to add books, authors, and genres using many-to-many relationships in MySQL.
 
 ## Setup/Installation Requirements
 
 * _Clone this repository_
-* _In the command line, run dotnet ef migration Initial_
+* _In the command line, run "dotnet ef migration Initial" in order to populate database_
 * _Then run dotnet ef migration update_
 * _Navigate to localhost:5000/_
 
